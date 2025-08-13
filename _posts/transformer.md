@@ -22,7 +22,7 @@ $d_{k}$ 为单头维度（single-head时 $d_{k}=d$），是为了数值稳定和
 
 **Q与K相乘含义解释**：在训练好的嵌入空间中，相关性高的words所对应的向量相似度也比较高，相应的点积得到的结果也就越大。score(i,j)是由Q的第i行乘以K的转置前的第j行，而 $q_{i}=x_{i}W^{Q}$，$k_{j}=x_{j}W^{K}$，在$W^{Q},W^{K}$训练好的情况下，相乘得到的结果即与第i个word和第j个word之间的相似程度成正相关。
 
-接下来对每一个列向量做 softmax 得到注意力权重：$A=\mathbf{softmax}(scores)$，即对第i个word与其他所有word的相似程度进行归一化
+接下来对每一个列向量做 softmax 得到注意力权重：$A=\mathbf{softmax}(scores)$，即对第i个word与其他所有word的相似程度进行归一化。
 
 此时将权重与values相乘得到每个query的输出：$\mathbf{Attention}(Q,K,V)=AV \in \mathbb{R}^{L\times d_{k}}$，可以理解为每个输出位置都对序列所有位置value做加权平均，权重由query与各key的相似程度确定。
 
