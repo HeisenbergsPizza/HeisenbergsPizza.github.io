@@ -5,3 +5,20 @@
 @import
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
+
+  /* ===== 自定义颜色覆盖 ===== */
+
+/* 整体背景和文字颜色 */
+body {
+  background-color: #001f3f; /* 深蓝色背景 */
+  color: #006400;           /* 墨绿色文字 */
+}
+
+/* 链接颜色（可选） */
+a {
+  color: #228b22; /* 深一点的绿色 */
+}
+
+a:hover {
+  color: #32cd32; /* hover 时亮一点的绿色 */
+}
