@@ -6,54 +6,63 @@
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
 
-/* ===== 全局自定义颜色覆盖 ===== */
+/* ===== 全局自定义颜色覆盖 + 排版优化 ===== */
 
-/* 整体背景与文字颜色 */
+/* 整体背景与正文文字 */
 body {
-  background-color: #2f2f2f; /* 浅深灰背景 */
-  color: #006400;           /* 墨绿色正文文字 */
+  background-color: #232323; /* 深灰背景（取自图片） */
+  color: #000000;           /* 黑色文字 */
+  font-weight: 600;         /* 全局文字加粗 */
+  line-height: 1.8;         /* 增加行距，提高可读性 */
 }
 
-/* 标题颜色（文章标题、页面标题） */
+/* 标题颜色和样式 */
 h1, h2, h3, h4, h5, h6 {
-  color: #006400; /* 墨绿色标题 */
+  color: #000000;     /* 黑色标题 */
+  font-weight: 700;   /* 标题更粗 */
+  line-height: 1.4;   /* 标题行距稍紧凑 */
 }
 
-/* 导航栏背景和文字颜色 */
+/* 导航栏样式 */
 .site-header {
-  background-color: #2f2f2f; /* 浅深灰背景 */
-  border-bottom: 1px solid #006400;
+  background-color: #232323;
+  border-bottom: 1px solid #000000;
 }
 .site-title, .site-title:visited {
-  color: #006400;
+  color: #000000;
+  font-weight: 700;
 }
 .site-title:hover {
-  color: #32cd32; /* hover 时亮绿色 */
+  color: #333333;
 }
 .site-nav .page-link {
-  color: #006400;
+  color: #000000;
+  font-weight: 600;
 }
 .site-nav .page-link:hover {
-  color: #32cd32;
+  color: #333333;
 }
 
-/* 页脚背景和文字颜色 */
+/* 页脚样式 */
 .site-footer {
-  background-color: #2f2f2f; /* 浅深灰背景 */
-  border-top: 1px solid #006400;
-  color: #006400;
+  background-color: #232323;
+  border-top: 1px solid #000000;
+  color: #000000;
+  font-weight: 600;
 }
 .site-footer a {
-  color: #228b22; /* 深绿色链接 */
+  color: #000000;
+  font-weight: 600;
 }
 .site-footer a:hover {
-  color: #32cd32; /* 亮绿色 hover */
+  color: #333333;
 }
 
-/* 链接颜色（正文中的超链接） */
+/* 链接样式（正文） */
 a {
-  color: #228b22;
+  color: #000000;
+  font-weight: 600;
 }
 a:hover {
-  color: #32cd32;
+  color: #333333;
 }
