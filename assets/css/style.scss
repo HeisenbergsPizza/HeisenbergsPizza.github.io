@@ -6,19 +6,54 @@
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
 
-  /* ===== 自定义颜色覆盖 ===== */
+/* ===== 全局自定义颜色覆盖 ===== */
 
-/* 整体背景和文字颜色 */
+/* 整体背景与文字颜色 */
 body {
-  background-color: #001f3f; /* 深蓝色背景 */
-  color: #006400;           /* 墨绿色文字 */
+  background-color: #001f3f; /* 深蓝背景 */
+  color: #006400;           /* 墨绿色正文文字 */
 }
 
-/* 链接颜色（可选） */
+/* 标题颜色（文章标题、页面标题） */
+h1, h2, h3, h4, h5, h6 {
+  color: #006400; /* 墨绿色标题 */
+}
+
+/* 导航栏背景和文字颜色 */
+.site-header {
+  background-color: #001f3f; /* 深蓝背景 */
+  border-bottom: 1px solid #006400;
+}
+.site-title, .site-title:visited {
+  color: #006400;
+}
+.site-title:hover {
+  color: #32cd32; /* hover 时亮绿色 */
+}
+.site-nav .page-link {
+  color: #006400;
+}
+.site-nav .page-link:hover {
+  color: #32cd32;
+}
+
+/* 页脚背景和文字颜色 */
+.site-footer {
+  background-color: #001f3f; /* 深蓝背景 */
+  border-top: 1px solid #006400;
+  color: #006400;
+}
+.site-footer a {
+  color: #228b22; /* 深绿色链接 */
+}
+.site-footer a:hover {
+  color: #32cd32; /* 亮绿色 hover */
+}
+
+/* 链接颜色（正文中的超链接） */
 a {
-  color: #228b22; /* 深一点的绿色 */
+  color: #228b22;
 }
-
 a:hover {
-  color: #32cd32; /* hover 时亮一点的绿色 */
+  color: #32cd32;
 }
