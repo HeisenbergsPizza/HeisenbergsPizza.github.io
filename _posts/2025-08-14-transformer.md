@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Transformer"
+date: 2025-08-14 1:19:00 
+---
 # Transformer
 
 transformer最初被用于文本的翻译任务，因此从这里开始
