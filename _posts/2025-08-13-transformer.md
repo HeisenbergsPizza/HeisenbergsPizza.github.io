@@ -5,8 +5,6 @@ date: 2025-08-13 01:19:00 +0800
 categories: [AI]
 tags: [Transformer]
 ---
-# Transformer
-
 transformer最初被用于文本的翻译任务，因此从这里开始
 
 由于输入形式与输出形式都是words sequence，因此首先需要对输入sequence进行的操作是Word Embedding，即将每一个word都使用维度为 $d$ 的向量表示，我们假设输入的序列长度为 $L$，那么我们就可以将这个句子表示为一个 $L\times d$ 的矩阵。但是这还不够，此时我们还无法表示每一个word的位置信息，因此还需要计算positional encoding。positional encoding由固定公式计算得到，与位置上的具体word无关，因此对于每个长度一样的句子来说都加上一个相同的positional encoding矩阵 $a$。相加即得到输入矩阵 $\mathbf{X}^{L\times d}$，将这个矩阵输入self-attention。
