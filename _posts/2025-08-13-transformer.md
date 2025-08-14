@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Transformer"
-date: 2025-08-13 1:19:00 +800
+date: 2025-08-13 01:19:00 +0800
+categories: [AI]
+tags: [Transformer]
 ---
 # Transformer
 
