@@ -17,7 +17,7 @@ $$
 Q=XW^{Q}+b^{Q}, K=XW^{K}+b^{K},V=XW^{V}+b^{K}
 $$
 
-单头注意力中，$X^{Q},X^{K},X^{V}\in \mathbb{R}^{d\times d}$，因此 $Q,K,V \in \mathbb{R}^{L\times d}$，将每个query与所有keys做点积得到打分矩阵：
+单头注意力中，$W^{Q},W^{K},W^{V}\in \mathbb{R}^{d\times d}$，因此 $Q,K,V \in \mathbb{R}^{L\times d}$，将每个query与所有keys做点积得到打分矩阵：
 
 $$
 scores=\frac{QK^{T}}{\sqrt{d_{k}}} \in \mathbb{R}^{L\times L}
