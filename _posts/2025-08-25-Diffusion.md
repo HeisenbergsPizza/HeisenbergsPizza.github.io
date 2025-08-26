@@ -5,7 +5,6 @@ date: 2025-08-25 16:30:00 +0800
 categories: [AIGC]
 tags: [diffusion]
 ---
-
 内容主要来自博客：https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
 ## Forward diffusion process
@@ -13,6 +12,10 @@ tags: [diffusion]
 推导前向过程就是向原始图片上逐步加高斯噪声，分 $T$ 次，该过程可视为马尔可夫过程，相邻步之间的加噪数学形式如下：
 
 $q(\mathbf{x}_{t}\|\mathbf{x}_{t-1} )=\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})$
+
+$$
+q(\mathbf{x}_{t}\|\mathbf{x}_{t-1} )=\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
+$$
 
 其中$\beta_{t}$是高斯分布方差的超参数, $\beta_{1}<\beta_{2}<...<\beta_{T}$
 
