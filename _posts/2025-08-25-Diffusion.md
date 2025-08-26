@@ -138,7 +138,7 @@ $$
     &= \mathbb{E}_q \left[ -\log p_{\theta}(\mathbf{x}_T) + \sum_{t=2}^{T} \log \frac{q(\mathbf{x}_t\|\mathbf{x}_{t-1})}{p_{\theta}(\mathbf{x}_t\|\mathbf{x}_{t-1})} + \log \frac{q(\mathbf{x}_1\|\mathbf{x}_0)}{p_{\theta}(\mathbf{x}_1\|\mathbf{x}_0)} \right] \\
     &= \mathbb{E}_q \left[ -\log p_{\theta}(\mathbf{x}_T) + \sum_{t=2}^{T} \log \frac{q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0)}{p_{\theta}(\mathbf{x}_t\|\mathbf{x}_{t-1})} + \log \frac{q(\mathbf{x}_1\|\mathbf{x}_0)}{p_{\theta}(\mathbf{x}_1\|\mathbf{x}_0)} \right] \\
     &= \mathbb{E}_q \left[ -\log p_{\theta}(\mathbf{x}_T) + \sum_{t=2}^{T} D_{\mathrm{KL}}(q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_t\|\mathbf{x}_{t-1})) - \log p_{\theta}(\mathbf{x}_0\|\mathbf{x}_1) \right] \\
-    &= \mathbb{E}_q \left[ D_{\mathrm{KL}}(q(\mathbf{x}_T\|\mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_T)) + \sum_{t=2}^{T} D_{\mathrm{KL}}(q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_t|\mathbf{x}_{t-1})) - \log p_{\theta}(\mathbf{x}_0|\mathbf{x}_1) \right]
+    &= \mathbb{E}_q \left[ D_{\mathrm{KL}}(q(\mathbf{x}_T\|\mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_T)) + \sum_{t=2}^{T} D_{\mathrm{KL}}(q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_t|\mathbf{x}_{t-1})) - \log p_{\theta}(\mathbf{x}_0\|\mathbf{x}_1) \right]
 \end{align*}
 $$
 
@@ -147,7 +147,7 @@ $$
 * $L_{0}=-log p_{\theta}(\mathbf{x}_0\|\mathbf{x}_1)$
 * $L_{LVB}=L_{T}+L_{T-1}+···+L_{0}$
 
-在 $L_{\mathrm{VLB}}$ 中，除了 $L_{0}$ 以外的所有 KL 散度项都在比较两个高斯分布，因此它们可以被闭式计算（有解析解）。由于 $\mathbf{x}_T$ 只是高斯噪声且并不包含可学习的参数，所以 $L_T$ 是一个常数，可以在训练过程中忽略。Ho 等人在 2020 年的工作中，通过一个独立的离散解码器（从 $\mathbf{x}_0 \sim p_\theta(x_0|x_1)$ ,$x_1 \sim p_\theta(x_1|x_2)$…,$x_T \sim p_\theta(x_T)$ 过程推导而来）来对 $L_0$ 进行建模。
+在 $L_{\mathrm{VLB}}$ 中，除了 $L_{0}$ 以外的所有 KL 散度项都在比较两个高斯分布，因此它们可以被闭式计算（有解析解）。由于 $\mathbf{x}_T$ 只是高斯噪声且并不包含可学习的参数，所以 $L_T$ 是一个常数，可以在训练过程中忽略。Ho 等人在 2020 年的工作中，通过一个独立的离散解码器（从 $\mathbf{x}_0 \sim p_\theta(x_0\|x_1)$ ,$x_1 \sim p_\theta(x_1\|x_2)$…,$x_T \sim p_\theta(x_T)$ 过程推导而来）来对 $L_0$ 进行建模。
 
 ### 对 $L_t$ 进行重参数化
 
