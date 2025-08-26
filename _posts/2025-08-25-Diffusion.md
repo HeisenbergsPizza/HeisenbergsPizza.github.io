@@ -11,25 +11,33 @@ tags: [diffusion]
 
 推导前向过程就是向原始图片上逐步加高斯噪声，分 $T$ 次，该过程可视为马尔可夫过程，相邻步之间的加噪数学形式如下：
 
-$q(\mathbf{x}_{t}\|\mathbf{x}_{t-1} )=\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})$
-
 $$
 q(\mathbf{x}_{t}\|\mathbf{x}_{t-1} )=\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
 $$
 
 其中$\beta_{t}$是高斯分布方差的超参数, $\beta_{1}<\beta_{2}<...<\beta_{T}$
 
-$q(\mathbf{x}_{1:T}\|\mathbf{x}_{0})=\prod_{t=1}^{T}q(\mathbf{x}_{t}\|\mathbf{x}_{t-1})=\prod_{t=1}^{T}\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})$
+$$
+q(\mathbf{x}_{1:T}\|\mathbf{x}_{0})=\prod_{t=1}^{T}q(\mathbf{x}_{t}\|\mathbf{x}_{t-1})=\prod_{t=1}^{T}\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
+$$
 
 令 $\alpha_{t}=1-\beta_{t}$，且 $\overline{\alpha_{t}}=\prod_{i=1}^{t}\alpha_{i}$
 
 $\mathbf{x}_{t}=\sqrt{\alpha_{t}}\mathbf{x}_{t-1}+\sqrt{1-\alpha_{t}}\epsilon_{1}$，其中 $\epsilon_{1}\sim N(0,\mathbf{I})$ 服从标准正态分布
 
-迭代得 $\mathbf{x}_{t}=\sqrt{\alpha_{t}}(\sqrt{\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t-1}}\epsilon_{2})+\sqrt{1-\alpha_{t}}\epsilon_{1}$
+迭代得：
+
+$$
+\mathbf{x}_{t}=\sqrt{\alpha_{t}}(\sqrt{\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t-1}}\epsilon_{2})+\sqrt{1-\alpha_{t}}\epsilon_{1}
+$$
 
 由于$\epsilon_{1}$,$\epsilon_{2}\sim N(0,\mathbf{I})$，根据正态分布的性质: $\mathcal{N}(\mu_{1},\sigma_1^2)+\mathcal{N}(\mu_{2},\sigma_2^2)=\mathcal{N}(\mu_{1}+\mu_{2},\sigma_1^2+\sigma_2^2)$
 
-可得：$\mathbf{x}_{t}=\sqrt{\alpha_{t}\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t}\alpha_{t-1}}\overline{\epsilon_{2}}$， 其中 $\overline{\epsilon_{2}}\sim N(0,\mathbf{I})$
+可得：
+
+$$
+\mathbf{x}_{t}=\sqrt{\alpha_{t}\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t}\alpha_{t-1}}\overline{\epsilon_{2}}, \space \space \space \overline{\epsilon_{2}}\sim N(0,\mathbf{I})
+$$
 
 递推可得：$\mathbf{x}_{t}=\sqrt{\overline{\alpha_{t}}} \mathbf{x}_{0}+\sqrt{1-\overline{\alpha_{t}}} \overline{\epsilon_{t}}$， 其中 $\overline{\epsilon_{t}}\sim N(0,\mathbf{I})$
 
