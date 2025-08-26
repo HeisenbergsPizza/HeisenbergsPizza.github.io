@@ -14,7 +14,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# 启用 kramdown + MathJax
+# kramdown + MathJax
 markdown: kramdown
 kramdown:
   input: GFM
