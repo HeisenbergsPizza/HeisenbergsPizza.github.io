@@ -9,7 +9,7 @@ author:
 # Build settings
 theme: minima
 
-# 仅保留 GitHub Pages 支持的插件
+# 保留 GitHub Pages 支持的插件
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
