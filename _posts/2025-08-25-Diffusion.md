@@ -15,7 +15,7 @@ $$
 q(\mathbf{x}_{t}\|\mathbf{x}_{t-1} )=\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
 $$
 
-其中$\beta_{t}$是高斯分布方差的超参数, $\beta_{1}<\beta_{2}<...<\beta_{T}$
+其中$\beta_{t}$是高斯分布方差的超参数, 设置为 $\beta_{1}<\beta_{2}<...<\beta_{T}$
 
 $$
 q(\mathbf{x}_{1:T}\|\mathbf{x}_{0})=\prod_{t=1}^{T}q(\mathbf{x}_{t}\|\mathbf{x}_{t-1})=\prod_{t=1}^{T}\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
