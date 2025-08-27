@@ -68,7 +68,11 @@ $$
 * 均值 $\mu_{\theta}(\mathbf{x}_{t},t)$ 由神经网络预测
 * 方差 $\Sigma_{\theta}(\mathbf{x}_{t},t)$ 可以学习也可以设定为固定值
 
-整个反向扩散过程的联合概率：$p_{\theta }(\mathbf{x}_{0:T})=p(\mathbf{x}_{T})\prod_{t=1}^{T}p_{\theta }(\mathbf{x}_{t-1}\|\mathbf{x}_{t})$
+整个反向扩散过程的联合概率：
+
+$$
+p_{\theta }(\mathbf{x}_{0:T})=p(\mathbf{x}_{T})\prod_{t=1}^{T}p_{\theta }(\mathbf{x}_{t-1}\|\mathbf{x}_{t})
+$$
 
 扩散模型的逆过程数学形式由条件概率分布表示：
 
@@ -93,7 +97,13 @@ q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)
 
 $$
 
-其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$ 无关的函数，因此可以忽略。由高斯分布的概率密度函数：$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})$ 可推得：方差 $\tilde{\beta}_t = \frac{1 - \overline{\alpha}_{t-1}}{1 - \overline{\alpha}_t} \beta_t$ 是定值，而均值
+其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$ 无关的函数，因此可以忽略。由高斯分布的概率密度函数：
+
+$$
+p(x)=\frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})
+$$
+
+可推得：方差 $\tilde{\beta}_t = \frac{1 - \overline{\alpha}_{t-1}}{1 - \overline{\alpha}_t} \beta_t$ 是定值，而均值
 
 $$
 \tilde{\mu}(\mathbf{x}_t, \mathbf{x}_0) = \frac{\sqrt{\alpha_t}(1 - \overline{\alpha}_{t-1})}{1 - \overline{\alpha}_t} \mathbf{x}_t + \frac{\sqrt{\overline{\alpha}_{t-1}} \beta_t}{1 - \overline{\alpha}_t} \mathbf{x}_0
