@@ -31,7 +31,7 @@ $$
 \mathbf{x}_{t}=\sqrt{\alpha_{t}}(\sqrt{\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t-1}}\epsilon_{2})+\sqrt{1-\alpha_{t}}\epsilon_{1}
 $$
 
-由于$\epsilon_{1}$,$\epsilon_{2}\sim N(0,\mathbf{I})$，根据正态分布的性质: $\mathcal{N}(\mu_{1},\sigma_1^2)+\mathcal{N}(\mu_{2},\sigma_2^2)=\mathcal{N}(\mu_{1}+\mu_{2},\sigma_1^2+\sigma_2^2)$
+由于 $\epsilon_{1}$,$\epsilon_{2}\sim N(0,\mathbf{I})$ ，根据正态分布的性质: $\mathcal{N}(\mu_{1},\sigma_1^2)+\mathcal{N}(\mu_{2},\sigma_2^2)=\mathcal{N}(\mu_{1}+\mu_{2},\sigma_1^2+\sigma_2^2)$
 
 可得：
 
@@ -39,7 +39,7 @@ $$
 \mathbf{x}_{t}=\sqrt{\alpha_{t}\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t}\alpha_{t-1}}\overline{\epsilon_{2}}, \space \space \space \overline{\epsilon_{2}}\sim N(0,\mathbf{I})
 $$
 
-递推可得：$\mathbf{x}_{t}=\sqrt{\overline{\alpha_{t}}} \mathbf{x}_{0}+\sqrt{1-\overline{\alpha_{t}}} \overline{\epsilon_{t}}$， 其中 $\overline{\epsilon_{t}}\sim N(0,\mathbf{I})$
+递推可得：$\mathbf{x}_{t}=\sqrt{\overline{\alpha_{t}}} \mathbf{x}_{0}+\sqrt{1-\overline{\alpha_{t}}} \overline{\epsilon_{t}}$ ， 其中 $\overline{\epsilon_{t}}\sim N(0,\mathbf{I})$
 
 因此，任意时刻 $\mathbf{x}_{t}$ 满足 $q(\mathbf{x}_{t}\|\mathbf{x}_{0})=\mathcal{N}(\mathbf{x}_{t};\sqrt{\overline{\alpha_{t}}}\mathbf{x}_{0},(1-\overline{\alpha_{t}})\mathbf{I})$
 
@@ -78,7 +78,7 @@ q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)
 \end{aligned}
 $$
 
-其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$无关的函数，因此可以忽略。由高斯分布的概率密度函数：$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})$ 可推得：方差 $\tilde{\beta}_t = \frac{1 - \overline{\alpha}_{t-1}}{1 - \overline{\alpha}_t} \beta_t$ 是定值，而均值
+其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$ 无关的函数，因此可以忽略。由高斯分布的概率密度函数：$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})$ 可推得：方差 $\tilde{\beta}_t = \frac{1 - \overline{\alpha}_{t-1}}{1 - \overline{\alpha}_t} \beta_t$ 是定值，而均值
 
 $$
 \tilde{\mu}(\mathbf{x}_t, \mathbf{x}_0) = \frac{\sqrt{\alpha_t}(1 - \overline{\alpha}_{t-1})}{1 - \overline{\alpha}_t} \mathbf{x}_t + \frac{\sqrt{\overline{\alpha}_{t-1}} \beta_t}{1 - \overline{\alpha}_t} \mathbf{x}_0
