@@ -21,9 +21,13 @@ $$
 q(\mathbf{x}_{1:T}\|\mathbf{x}_{0})=\prod_{t=1}^{T}q(\mathbf{x}_{t}\|\mathbf{x}_{t-1})=\prod_{t=1}^{T}\mathcal{N}(\mathbf{x}_{t};\sqrt{1-\beta _{t}}\mathbf{x}_{t-1},\beta_{t}\mathbf{I})
 $$
 
-令 $\alpha_{t}=1-\beta_{t}$，且 $\overline{\alpha_{t}}=\prod_{i=1}^{t}\alpha_{i}$
+令 $\alpha_{t}=1-\beta_{t}$，且 $\overline{\alpha_{t}}=\prod_{i=1}^{t}\alpha_{i}$，则有：
 
-$\mathbf{x}_{t}=\sqrt{\alpha_{t}}\mathbf{x}_{t-1}+\sqrt{1-\alpha_{t}}\epsilon_{1}$，其中 $\epsilon_{1}\sim N(0,\mathbf{I})$ 服从标准正态分布
+$$
+\mathbf{x}_{t}=\sqrt{\alpha_{t}}\mathbf{x}_{t-1}+\sqrt{1-\alpha_{t}}\epsilon_{1}
+$$
+
+其中 $\epsilon_{1}\sim N(0,\mathbf{I})$ 服从标准正态分布
 
 迭代得：
 
@@ -39,9 +43,19 @@ $$
 \mathbf{x}_{t}=\sqrt{\alpha_{t}\alpha_{t-1}}\mathbf{x}_{t-2}+\sqrt{1-\alpha_{t}\alpha_{t-1}}\overline{\epsilon_{2}}, \space \space \space \overline{\epsilon_{2}}\sim N(0,\mathbf{I})
 $$
 
-递推可得：$\mathbf{x}_{t}=\sqrt{\overline{\alpha_{t}}} \mathbf{x}_{0}+\sqrt{1-\overline{\alpha_{t}}} \overline{\epsilon_{t}}$ ， 其中 $\overline{\epsilon_{t}}\sim N(0,\mathbf{I})$
+递推可得：
 
-因此，任意时刻 $\mathbf{x}_{t}$ 满足 $q(\mathbf{x}_{t}\|\mathbf{x}_{0})=\mathcal{N}(\mathbf{x}_{t};\sqrt{\overline{\alpha_{t}}}\mathbf{x}_{0},(1-\overline{\alpha_{t}})\mathbf{I})$
+$$
+\mathbf{x}_{t}=\sqrt{\overline{\alpha_{t}}} \mathbf{x}_{0}+\sqrt{1-\overline{\alpha_{t}}} \overline{\epsilon_{t}}
+$$
+
+其中 $\overline{\epsilon_{t}}\sim N(0,\mathbf{I})$
+
+因此，任意时刻 $\mathbf{x}_{t}$ 满足：
+
+$$
+q(\mathbf{x}_{t}\|\mathbf{x}_{0})=\mathcal{N}(\mathbf{x}_{t};\sqrt{\overline{\alpha_{t}}}\mathbf{x}_{0},(1-\overline{\alpha_{t}})\mathbf{I})
+$$
 
 ## Reverse diffusion process
 
@@ -140,7 +154,6 @@ $$
     &= \mathbb{E}_q \left[ -\log p_{\theta}(\mathbf{x}_T) + \sum_{t=2}^{T} D_{\mathrm{KL}}(q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_t\|\mathbf{x}_{t-1})) - \log p_{\theta}(\mathbf{x}_0\|\mathbf{x}_1) \right] \\
     &= \mathbb{E}_q \left[ D_{\mathrm{KL}}(q(\mathbf{x}_T\|\mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_T)) + \sum_{t=2}^{T} D_{\mathrm{KL}}(q(\mathbf{x}_t\|\mathbf{x}_{t-1}, \mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_t|\mathbf{x}_{t-1})) - \log p_{\theta}(\mathbf{x}_0\|\mathbf{x}_1) \right]
 \end{align*}
-
 $$
 
 * $L_{T}=D_{\mathrm{KL}}(q(\mathbf{x}_T\|\mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_T))$
