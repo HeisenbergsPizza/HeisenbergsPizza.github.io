@@ -87,9 +87,10 @@ $$
 q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0) 
 &= q(\mathbf{x}_t \vert \mathbf{x}_{t-1}, \mathbf{x}_0) \frac{ q(\mathbf{x}_{t-1} \vert \mathbf{x}_0) }{ q(\mathbf{x}_t \vert \mathbf{x}_0) } \\
 &\propto \exp \Big(-\frac{1}{2} \big(\frac{(\mathbf{x}_t - \sqrt{\alpha_t} \mathbf{x}_{t-1})^2}{\beta_t} + \frac{(\mathbf{x}_{t-1} - \sqrt{\bar{\alpha}_{t-1}} \mathbf{x}_0)^2}{1-\bar{\alpha}_{t-1}} - \frac{(\mathbf{x}_t - \sqrt{\bar{\alpha}_t} \mathbf{x}_0)^2}{1-\bar{\alpha}_t} \big) \Big) \\
-&= \exp \Big(-\frac{1}{2} \big(\frac{\mathbf{x}_t^2 - 2\sqrt{\alpha_t} \mathbf{x}_t \color{black}{\mathbf{x}_{t-1}} \color{black}{+ \alpha_t} \color{black}{\mathbf{x}_{t-1}^2} }{\beta_t} + \frac{ \color{black}{\mathbf{x}_{t-1}^2} \color{black}{- 2 \sqrt{\bar{\alpha}_{t-1}} \mathbf{x}_0} \color{black}{\mathbf{x}_{t-1}} \color{black}{+ \bar{\alpha}_{t-1} \mathbf{x}_0^2}  }{1-\bar{\alpha}_{t-1}} - \frac{(\mathbf{x}_t - \sqrt{\bar{\alpha}_t} \mathbf{x}_0)^2}{1-\bar{\alpha}_t} \big) \Big) \\
-&= \exp\Big( -\frac{1}{2} \big( \color{black}{(\frac{\alpha_t}{\beta_t} + \frac{1}{1 - \bar{\alpha}_{t-1}})} \mathbf{x}_{t-1}^2 - \color{black}{(\frac{2\sqrt{\alpha_t}}{\beta_t} \mathbf{x}_t + \frac{2\sqrt{\bar{\alpha}_{t-1}}}{1 - \bar{\alpha}_{t-1}} \mathbf{x}_0)} \mathbf{x}_{t-1}  + C(\mathbf{x}_t, \mathbf{x}_0) \big) \Big)
+&= \exp \Big(-\frac{1}{2} \big(\frac{\mathbf{x}_t^2 - 2\sqrt{\alpha_t} \mathbf{x}_t \mathbf{x}_{t-1} + \alpha_t \mathbf{x}_{t-1}^2 }{\beta_t} + \frac{ \mathbf{x}_{t-1}^2 - 2 \sqrt{\bar{\alpha}_{t-1}} \mathbf{x}_0 \mathbf{x}_{t-1} + \bar{\alpha}_{t-1} \mathbf{x}_0^2  }{1-\bar{\alpha}_{t-1}} - \frac{(\mathbf{x}_t - \sqrt{\bar{\alpha}_t} \mathbf{x}_0)^2}{1-\bar{\alpha}_t} \big) \Big) \\
+&= \exp\Big( -\frac{1}{2} \big( (\frac{\alpha_t}{\beta_t} + \frac{1}{1 - \bar{\alpha}_{t-1}}) \mathbf{x}_{t-1}^2 - (\frac{2\sqrt{\alpha_t}}{\beta_t} \mathbf{x}_t + \frac{2\sqrt{\bar{\alpha}_{t-1}}}{1 - \bar{\alpha}_{t-1}} \mathbf{x}_0) \mathbf{x}_{t-1}  + C(\mathbf{x}_t, \mathbf{x}_0) \big) \Big)
 \end{aligned}
+
 $$
 
 其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$ 无关的函数，因此可以忽略。由高斯分布的概率密度函数：$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}} exp(-\frac{(x-\mu)^2}{2\sigma^2})$ 可推得：方差 $\tilde{\beta}_t = \frac{1 - \overline{\alpha}_{t-1}}{1 - \overline{\alpha}_t} \beta_t$ 是定值，而均值
@@ -193,7 +194,7 @@ L_t
 \bigl\|
 \epsilon 
 - 
-\epsilon_\theta\bigl(\sqrt{\alpha_t}\,x_0 + \sqrt{1 - \alpha_t}\,\epsilon,\; t\bigr)
+\epsilon_\theta\bigl(\sqrt{\alpha_t}\,\mathbf{x}_0 + \sqrt{1 - \alpha_t}\,\epsilon,\; t\bigr)
 \bigr\|^2
 \Bigr].
 $$
