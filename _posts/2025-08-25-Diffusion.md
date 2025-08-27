@@ -62,7 +62,7 @@ $$
 目标是反向推导以上过程，从 $\mathbf{x}_{T}$ 中逐步去除噪声，还原 $\mathbf{x}_{0}$，就能实现数据生成。这需要对逆条件概率分布 $q(\mathbf{x}_{t-1}\|\mathbf{x}_{t})$ 进行采样。但是这涉及整个数据集，难以直接计算，因此需要学习一个近似的模型
 
 $$
-p_{\theta}(\mathbf{x}_{t-1}\|\mathbf{x}_{t})=\mathcal{N}(\mathbf{x}_{t-1};\mu_{\theta}(\mathbf{x}_{t},t),\Sigma_{\theta}(\mathbf{x}_{t},t))
+p_{\theta}(\mathbf{x}_{t-1}|\mathbf{x}_{t})=\mathcal{N}(\mathbf{x}_{t-1};\mu_{\theta}(\mathbf{x}_{t},t),\Sigma_{\theta}(\mathbf{x}_{t},t))
 $$
 
 * 均值 $\mu_{\theta}(\mathbf{x}_{t},t)$ 由神经网络预测
@@ -83,7 +83,7 @@ $$
 下面给出推导过程，利用贝叶斯定理，我们可以展开：
 
 $$
-q(\mathbf{x}_{t-1} \| \mathbf{x}_t, \mathbf{x}_0) = \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)}
+q(\mathbf{x}_{t-1} | \mathbf{x}_t, \mathbf{x}_0) = \frac{q(\mathbf{x}_t | \mathbf{x}_{t-1}, \mathbf{x}_0) q(\mathbf{x}_{t-1} | \mathbf{x}_0)}{q(\mathbf{x}_t | \mathbf{x}_0)}
 $$
 
 $$
@@ -129,7 +129,7 @@ $$
 
 $$
 \begin{align*}
-    -\log p_{\theta}(\mathbf{x}_0) &\leq -\log p_{\theta}(\mathbf{x}_0) + D_{\mathrm{KL}}(q(\mathbf{x}_{1:T}\|\mathbf{x}_0) \|\| p_{\theta}(\mathbf{x}_{1:T}\|\mathbf{x}_0))    ；KL散度非负 \\
+    -\log p_{\theta}(\mathbf{x}_0) &\leq -\log p_{\theta}(\mathbf{x}_0) + D_{\mathrm{KL}}(q(\mathbf{x}_{1:T}|\mathbf{x}_0) || p_{\theta}(\mathbf{x}_{1:T}\|\mathbf{x}_0))    ；KL散度非负 \\
     &= -\log p_{\theta}(\mathbf{x}_0) + \mathbb{E}_{\mathbf{x}_{1:T} \sim q(\mathbf{x}_{1:T}\|\mathbf{x}_0)} \left[ \log \frac{q(\mathbf{x}_{1:T}\|\mathbf{x}_0)}{p_{\theta}(\mathbf{x}_{1:T}) / p_{\theta}(\mathbf{x}_0)} \right] \\
     &= -\log p_{\theta}(\mathbf{x}_0) + \mathbb{E}_q \left[ \log \frac{q(\mathbf{x}_{1:T}\|\mathbf{x}_0)}{p_{\theta}(\mathbf{x}_{1:T})} \right] + \log p_{\theta}(\mathbf{x}_0) \\
     &= \mathbb{E}_q \left[ \log \frac{q(\mathbf{x}_{1:T}\|\mathbf{x}_0)}{p_{\theta}(\mathbf{x}_{1:T})} \right]
