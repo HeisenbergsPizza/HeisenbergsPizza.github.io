@@ -59,7 +59,7 @@ $$
 
 ## Reverse diffusion process
 
-目标是反向推导以上过程，从 $\mathbf{x}_{T}$ 中逐步去除噪声，还原 $\mathbf{x}_{0}$，就能实现数据生成。这需要对逆条件概率分布 $q(\mathbf{x}_{t-1}\|\mathbf{x}_{t})$ 进行采样。但是这涉及整个数据集，难以直接计算，因此需要学习一个近似的模型
+目标是反向推导以上过程，从 $\mathbf{x}_T$ 中逐步去除噪声，还原 $\mathbf{x}_{0}$，就能实现数据生成。这需要对逆条件概率分布 $q(\mathbf{x}_{t-1}\|\mathbf{x}_{t})$ 进行采样。但是这涉及整个数据集，难以直接计算，因此需要学习一个近似的模型
 
 $$
 p_{\theta}(\mathbf{x}_{t-1}|\mathbf{x}_{t})=\mathcal{N}(\mathbf{x}_{t-1};\mu_{\theta}(\mathbf{x}_{t},t),\Sigma_{\theta}(\mathbf{x}_{t},t))
@@ -94,7 +94,6 @@ q(\mathbf{x}_{t-1} \vert \mathbf{x}_t, \mathbf{x}_0)
 &= \exp \Big(-\frac{1}{2} \big(\frac{\mathbf{x}_t^2 - 2\sqrt{\alpha_t} \mathbf{x}_t \mathbf{x}_{t-1} + \alpha_t \mathbf{x}_{t-1}^2 }{\beta_t} + \frac{ \mathbf{x}_{t-1}^2 - 2 \sqrt{\bar{\alpha}_{t-1}} \mathbf{x}_0 \mathbf{x}_{t-1} + \bar{\alpha}_{t-1} \mathbf{x}_0^2  }{1-\bar{\alpha}_{t-1}} - \frac{(\mathbf{x}_t - \sqrt{\bar{\alpha}_t} \mathbf{x}_0)^2}{1-\bar{\alpha}_t} \big) \Big) \\
 &= \exp\Big( -\frac{1}{2} \big( (\frac{\alpha_t}{\beta_t} + \frac{1}{1 - \bar{\alpha}_{t-1}}) \mathbf{x}_{t-1}^2 - (\frac{2\sqrt{\alpha_t}}{\beta_t} \mathbf{x}_t + \frac{2\sqrt{\bar{\alpha}_{t-1}}}{1 - \bar{\alpha}_{t-1}} \mathbf{x}_0) \mathbf{x}_{t-1}  + C(\mathbf{x}_t, \mathbf{x}_0) \big) \Big)
 \end{aligned}
-
 $$
 
 其中 $C(\mathbf{x}_t, \mathbf{x}_0)$ 是一个与 $\mathbf{x}_{t-1}$ 无关的函数，因此可以忽略。由高斯分布的概率密度函数：
