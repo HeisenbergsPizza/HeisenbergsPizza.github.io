@@ -122,7 +122,7 @@ $$
 \tilde{\boldsymbol{\mu}}_t = \frac{1}{\sqrt{\alpha_t}} \left( \mathbf{x}_t - \frac{1 - \alpha_t}{\sqrt{1 - \overline{\alpha}_t}} \boldsymbol{\epsilon}_t \right)
 $$
 
-现在要在已知 $\mathbf{x}_{0}$（训练时）的情况下最大化对数似然，等价于最小化负对数似然 $-log p_{\theta}(x_{0})$
+现在要在已知 $\mathbf{x}_{0}$（训练时）的情况下最大化对数似然，等价于最小化负对数似然 $-\log p_{\theta}(x_{0})$
 
 可以使用变分下界来最小化负对数似然：
 
